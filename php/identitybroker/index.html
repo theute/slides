@@ -20,6 +20,9 @@
       document.write( '<link rel="stylesheet" href="../css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
 
+    <!-- Event Juggler demo -->
+    <script src="https://ejsdev-stianst.rhcloud.com/ejs-identity/js/login.js"></script>
+
     <!--[if lt IE 9]>
       <script src="../lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -63,7 +66,39 @@
           </div>
           <div>RESTEasy to easily add REST endpoints to services</div>
         </section>
-      </div>
+        <section>
+          <h2>Demo</h2>
+          <div>
+            <input id="appKey" placeHolder="Application Key" style="width: 50em;" />
+            <button onclick="showLogin();">Show login</button>
+          </div>
+
+          <div id="ib-login-container"></div>
+          
+          <script>
+            if (sessionStorage.appKey) {
+              document.getElementById("appKey").value = sessionStorage.appKey;
+            }
+
+            function showLogin() {
+              identityBroker.appKey = document.getElementById("appKey").value;
+              identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
+              identityBroker.renderLoginForm("ib-login-container");
+
+              sessionStorage.appKey = identityBroker.appKey;
+            }
+          </script>
+        </section>
+        <section>
+          <h2>Demo (cont)</h2>
+          <pre id="user"></pre>
+
+          <script>
+            identityBroker.appKey = sessionStorage.appKey;
+            identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
+            identityBroker.getUser(function (user) { document.getElementById("user").textContent = JSON.stringify(user, undefined, 4) })
+          </script>
+      </section>
     </div>
 
     <script src="../lib/js/head.min.js"></script>
