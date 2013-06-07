@@ -70,10 +70,13 @@
           <h2>Demo</h2>
           <div>
             <input id="appKey" placeHolder="Application Key" style="width: 50em;" />
-            <button onclick="showLogin();">Show login</button>
+            <br/>
+            <a onclick="showLogin();">Show login Form</a>
           </div>
 
-          <div id="ib-login-container"></div>
+          <div style="height:100px"></div>
+
+          <div id="ib-login-container" style="height:300px"></div>
           
           <script>
             if (sessionStorage.appKey) {
@@ -91,13 +94,15 @@
         </section>
         <section>
           <h2>Demo (cont)</h2>
-          <pre id="user"></pre>
+
+          <pre><code data-trim id="user"></code></pre>
 
           <script>
             identityBroker.appKey = sessionStorage.appKey;
             identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
             identityBroker.getUser(function (user) { document.getElementById("user").textContent = JSON.stringify(user, undefined, 4) })
           </script>
+
       </section>
     </div>
 
