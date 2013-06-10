@@ -32,7 +32,7 @@
     <div class="reveal">
       <div class="slides">
         <section data-state="alert">
-          <h1>Build an identity broker with JBoss Stuff</h1>
+          <h1>Build an identity broker with JBoss projects</h1>
           <p>Thomas Heute - Senior Engineering Manager @ Red Hat<br> JUDCon US 2013</p>
         </section>
         <section>
@@ -67,6 +67,29 @@
           <div>RESTEasy to easily add REST endpoints to services</div>
         </section>
         <section>
+          <h2>The @#$%ing fastest application server</h2>
+          <div>
+            <img src="img/wildfly_logo_600px.png"/>
+          </div>
+        </section>
+        <section>
+          <h2>Some Web Stuff</h2>
+          <div>
+            <ul>
+              <li>Twitter Bootstrap</li>
+              <li>Angular JS</li>
+              <li>Reused time from UI designer so that it doesn't look too lame</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h2>Running the admin console on the cloud</h2>
+          <div>
+            <p>Running on OpenShift</p>
+            <img src="img/openshift_logo.png"/>
+          </div>
+        </section>
+        <section data-state="soothe">
           <h2>Demo</h2>
           <div>
             <input id="appKey" placeHolder="Application Key" style="width: 50em;" />
@@ -92,7 +115,7 @@
             }
           </script>
         </section>
-        <section>
+        <section data-state="soothe">
           <h2>Demo (cont)</h2>
 
           <pre><code data-trim id="user"></code></pre>
@@ -102,8 +125,11 @@
             identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
             identityBroker.getUser(function (user) { document.getElementById("user").textContent = JSON.stringify(user, undefined, 4) })
           </script>
-
-      </section>
+        </section>
+        <section data-state="blackout">
+          <h1>The end</h1>
+  
+        </section>
     </div>
 
     <script src="../lib/js/head.min.js"></script>
