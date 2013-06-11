@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Building an indentity broker with JBoss - Thomas Heute</title>
+    <title>Building an indentity broker with JBoss projects - Thomas Heute</title>
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Thomas Heute">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -89,42 +89,44 @@
             <img src="img/openshift_logo.png"/>
           </div>
         </section>
-        <section data-state="soothe">
-          <h2>Demo</h2>
-          <div>
-            <input id="appKey" placeHolder="Application Key" style="width: 50em;" />
-            <br/>
-            <a onclick="showLogin();">Show login Form</a>
-          </div>
+        <section>
+          <section data-state="soothe">
+            <h2>Demo</h2>
+            <div>
+              <input id="appKey" placeHolder="Application Key" style="width: 50em;" />
+              <br/>
+              <a onclick="showLogin();">Show login Form</a>
+            </div>
 
-          <div style="height:100px"></div>
+            <div style="height:100px"></div>
 
-          <div id="ib-login-container" style="height:300px"></div>
+            <div id="ib-login-container" style="height:300px"></div>
           
-          <script>
-            if (sessionStorage.appKey) {
-              document.getElementById("appKey").value = sessionStorage.appKey;
-            }
+            <script>
+              if (sessionStorage.appKey) {
+                document.getElementById("appKey").value = sessionStorage.appKey;
+              }
 
-            function showLogin() {
-              identityBroker.appKey = document.getElementById("appKey").value;
+              function showLogin() {
+                identityBroker.appKey = document.getElementById("appKey").value;
+                identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
+                identityBroker.renderLoginForm("ib-login-container");
+
+                sessionStorage.appKey = identityBroker.appKey;
+              }
+            </script>
+          </section>
+          <section data-state="soothe">
+            <h2>Demo (cont)</h2>
+
+            <pre><code data-trim id="user"></code></pre>
+
+            <script>
+              identityBroker.appKey = sessionStorage.appKey;
               identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
-              identityBroker.renderLoginForm("ib-login-container");
-
-              sessionStorage.appKey = identityBroker.appKey;
-            }
-          </script>
-        </section>
-        <section data-state="soothe">
-          <h2>Demo (cont)</h2>
-
-          <pre><code data-trim id="user"></code></pre>
-
-          <script>
-            identityBroker.appKey = sessionStorage.appKey;
-            identityBroker.baseUrl = "https://ejsdev-stianst.rhcloud.com/ejs-identity";
-            identityBroker.getUser(function (user) { document.getElementById("user").textContent = JSON.stringify(user, undefined, 4) })
-          </script>
+              identityBroker.getUser(function (user) { document.getElementById("user").textContent = JSON.stringify(user, undefined, 4) })
+            </script>
+          </section>
         </section>
         <section data-state="blackout">
           <h1>The end</h1>
